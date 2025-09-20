@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Feedbacks</title>
+  <style>
+    body {
+      background: #ffe6f2;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 { color: #d63384; }
+    .feedback-list {
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .feedback-item {
+      background: #f9d6eb;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #d63384;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>All Feedbacks 💌</h1>
+  <div id="feedbackList" class="feedback-list"></div>
+  <a href="index.html">⬅️ Back to Birthday Page</a>
+
+  <script>
+    window.onload = function() {
+      const feedbacks = JSON.parse(localStorage.getItem("birthdayFeedbacks") || "[]");
+      const feedbackList = document.getElementById("feedbackList");
+
+      if(feedbacks.length === 0){
+        feedbackList.innerHTML = "<p>No feedback yet...</p>";
+      } else {
+        feedbacks.forEach(fb => {
+          const div = document.createElement("div");
+          div.className = "feedback-item";
+          div.innerText = fb;
+          feedbackList.appendChild(div);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
